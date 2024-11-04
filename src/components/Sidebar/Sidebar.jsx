@@ -4,8 +4,12 @@ import { assets } from "../../assets/assets";
 import { Context } from "../../context/Context";
 const Sidebar = () => {
   const [extended, setExtended] = useState(false);
-  const {onSent , prevPrompts , recentPrompt} = useContext(Context)
+  const {onSent , prevPrompts , setRecentPrompt} = useContext(Context)
 
+  const loadPrompt = async (prompt) =>{
+    setRecentPrompt(prompt)
+   await onSent(prompt)
+  }
   return (
     <div className="sidebar">
       <div className="top">
@@ -26,9 +30,9 @@ const Sidebar = () => {
             {prevPrompts.map((item ,index) =>{
               return (
                 // eslint-disable-next-line react/jsx-key
-                <div className="recent-entry">
+                <div onClick={() => loadPrompt(item)} className="recent-entry">
               <img className="history" src={assets.message_icon} alt="" />
-              <p>{item}</p>
+              <p>{item.slice(0,18)}</p>
             </div>
               )
             })}

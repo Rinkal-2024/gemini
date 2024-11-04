@@ -22,22 +22,24 @@ const ContextProvider = (props) => {
     setResult("");
     setLoading(true);
     setShowResult(true); 
-    setRecentPrompt(input);
-    setPrevPrompts(prev=>[...prev,input])
-    const response = await runChat(input);
+
+    let response;
+    if(prompt !== undefined){
+      response = await runChat(prompt);
+      setRecentPrompt(prompt)
+    }else{
+      setPrevPrompts(prev=>[...prev, input])
+      setRecentPrompt(input);
+      response = await runChat(input)
+    }
+    // setRecentPrompt(input);
+    // setPrevPrompts(prev=>[...prev,input])
+    // const response = await runChat(input);
     let responseArray =response.split("**");
     let newResponse ;
     for(let i = 0 ; i< responseArray.length ; i++)
     {
-      // delayPara(i,responseArray[i+1]);
-      // newResponse = [...prevPrompts, responseArray[i]];
-      // setPrevPrompts(newResponse);
-      // if(i === responseArray.length - 1)
-      // {
-      //   setRecentPrompt(responseArray[i]);
-      // }
-
-      // itrate each word which is seprated by **
+      // iterate each word which is seprated by **
 
       if(i === 0  || i%2 !== 1){
         newResponse +=  responseArray[i];
