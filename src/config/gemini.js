@@ -2,7 +2,7 @@
 import { GoogleGenerativeAI , HarmCategory , HarmBlockThreshold } from "@google/generative-ai";
 // const prompt = "Explain how AI works";
 
-const API_KEY = import.meta.API_KEY
+const API_KEY = import.meta.env.VITE_API_KEY
 async function runChat(prompt) {
     const genAI = new GoogleGenerativeAI(API_KEY);
     // const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
@@ -39,8 +39,6 @@ async function runChat(prompt) {
         {
             category: HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
             threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
-        },
-        {
         }
     ]
 
