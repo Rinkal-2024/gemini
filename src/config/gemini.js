@@ -1,4 +1,3 @@
-//AIzaSyCS10ReZ0YKsw_zek812UVRO8yLdfygV08
 import { GoogleGenerativeAI , HarmCategory , HarmBlockThreshold } from "@google/generative-ai";
 // const prompt = "Explain how AI works";
 
@@ -45,9 +44,7 @@ async function runChat(prompt) {
     const chat = model.startChat({
         generationConfig,
         safetySettings,
-        history:[
-
-        ]
+        history:[]
     })
 
     const result = await model.generateContent(prompt);
@@ -55,6 +52,6 @@ async function runChat(prompt) {
     const response = result.response
     console.log(response.text());
     return response.text();
-
 }
-export default runChat;
+
+export default runChat; 

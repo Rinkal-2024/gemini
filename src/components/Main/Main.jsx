@@ -22,19 +22,19 @@ const Main = () => {
             </div>
             <div className="cards">
               <div className="card">
-                <p>Suggest beautiful places to see on an upcoming road trip</p>
+                <p  onClick={() =>onSent("Suggest beautiful places to see on an upcoming road trip")} >Suggest beautiful places to see on an upcoming road trip</p>
                 <img src={assets.compass_icon} />
               </div>
               <div className="card">
-                <p>Briefly summarize this concept: urban planning</p>
+                <p  onClick={() =>onSent("Briefly summarize this concept: urban planning")}>Briefly summarize this concept: urban planning</p>
                 <img src={assets.bulb_icon} />
               </div>
               <div className="card">
-                <p>Brainstorm team bonding activities for our work retreat</p>
+                <p onClick={() =>onSent("Brainstorm team bonding activities for our work retreat")}>Brainstorm team bonding activities for our work retreat</p>
                 <img src={assets.message_icon} />
               </div>
               <div className="card">
-                <p>Tell me about React js and React native</p>
+                <p onClick={() =>onSent("Tell me about React js and React native")}>Tell me about React js and React native</p>
                 <img src={assets.code_icon} />
               </div>
             </div>
@@ -71,7 +71,8 @@ const Main = () => {
             <div>
               <img src={assets.gallery_icon} />
               <img src={assets.mic_icon} />
-              <img onClick={() => onSent()} src={assets.send_icon} />
+              {input? <img onClick={() => onSent()} src={assets.send_icon} />:''}
+              {/* <img onClick={() => onSent()} src={assets.send_icon} /> */}
             </div>
           </div>
           <p className="bottom-info">
